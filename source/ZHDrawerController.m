@@ -134,7 +134,7 @@ typedef NS_ENUM(NSInteger, CameraMoveDirection) {
 }
 
 #pragma mark - UIGestureRecognizerDelegate
-// 设置手势 滑动 和 tableView 滚动并存 (防止竖直滚动时存在水平滚动导致view晃动)
+// 设置手势滑动 和 tableView 滚动并存 (防止竖直滚动时存在水平滚动导致view晃动)
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     
     if ([otherGestureRecognizer.view isKindOfClass:[UITableView class]]) {

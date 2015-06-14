@@ -19,7 +19,9 @@
 
     UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.frame];
     
-    img.image = [UIImage imageNamed:@"pic1.png"];
+    img.image = [UIImage imageNamed:@"mv_right.png"];
+    
+    //img.image = [UIImage imageNamed:@"right.jpg"];
     
     [self.view addSubview:img];
     

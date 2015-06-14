@@ -10,9 +10,10 @@
 #import "LeftViewController.h"
 #import "MainViewController.h"
 #import "RightViewController.h"
-#import <BeautyDrawer/ZHDrawerController.h>
+
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -30,13 +31,13 @@
     RightViewController *right = [[RightViewController alloc] init];
     
     // 3. 创建跟控制器
-    ZHDrawerController *controller = [[ZHDrawerController alloc] initWithLeftController:left andMainController:main andRightController:right];
-    controller.hideMainViewScale = 1.0;
-    controller.backMainViewScale = 1.0;
-    controller.centerDeviationX = 0.2;
+   self.controller = [[ZHDrawerController alloc] initWithLeftController:left andMainController:main andRightController:right];
+    self.controller.hideMainViewScale = 0.8;
+    self.controller.backMainViewScale = 1.0;
+    self.controller.centerDeviationX = 0.2;
     
     // 4. 设置跟控制器
-    self.window.rootViewController = controller;
+    self.window.rootViewController = self.controller;
     
     // 5. 显示 window
     [self.window makeKeyAndVisible];

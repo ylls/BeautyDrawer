@@ -10,4 +10,8 @@
 
 @interface MainViewController : UIViewController
 
+- (void)RightView;
+
+- (void)LeftView;
+
 @end

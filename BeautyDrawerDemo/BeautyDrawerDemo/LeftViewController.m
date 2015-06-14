@@ -19,13 +19,15 @@
     
     UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.frame];
     
-    img.image = [UIImage imageNamed:@"pic2.png"];
+    img.image = [UIImage imageNamed:@"mv_left.png"];
+    //img.image = [UIImage imageNamed:@"left.jpg"];
     
     [self.view addSubview:img];
     
     
     //self.view.backgroundColor = [UIColor purpleColor];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

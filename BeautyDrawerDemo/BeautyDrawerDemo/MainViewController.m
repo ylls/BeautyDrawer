@@ -7,51 +7,77 @@
 //
 
 #import "MainViewController.h"
+#import "AppDelegate.h"
 #import <BeautyDrawer/ZHDrawerController.h>
+
+#define ViewSize [UIScreen mainScreen].bounds.size
 
 @interface MainViewController ()
 
-@property (nonatomic, strong) ZHDrawerController *drawerController;
+@property (nonatomic, strong) AppDelegate *delegate;
 
 @end
-
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIButton *buttonLeft = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
-    [buttonLeft setImage:[UIImage imageNamed:@"setting-icon-1-1-1"] forState:UIControlStateNormal];
-    [buttonLeft addTarget:self action:@selector(showLeftView) forControlEvents:UIControlEventTouchUpInside];
+    //不缩放 hideMainViewScale = 1.0
+    //[self addImage];
     
-    UIButton *buttonRight = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
+    //缩放 hideMainViewScale = 0.8
+    [self loadAddView];
+}
+
+- (void)addImage
+{
+    UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.frame];
     
+    img.image = [UIImage imageNamed:@"main.jpg"];
+    
+    [self.view addSubview:img];
+
+}
+
+- (void)loadAddView
+{
+    UIButton *buttonLeft = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 70, 30)];
+    
+    buttonLeft.backgroundColor = [UIColor grayColor];
+    [buttonLeft setTitle:@"左视图" forState:UIControlStateNormal];
+    buttonLeft.tintColor = [UIColor whiteColor];
+    
+    
+    [buttonLeft addTarget:self action:@selector(LeftView) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *buttonRight = [[UIButton alloc] initWithFrame:CGRectMake(ViewSize.width-80, 10, 70, 30)];
+    buttonRight.backgroundColor = [UIColor grayColor];
+    [buttonRight setTitle:@"右视图" forState:UIControlStateNormal];
+    buttonLeft.tintColor = [UIColor whiteColor];
+    
+    
+    [buttonLeft addTarget:self action:@selector(RightView) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:buttonLeft];
+    [self.view addSubview:buttonRight];
     
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
-    // Do any additional setup after loading the view.
+    UIImageView *img = [[UIImageView alloc] initWithFrame:self.view.frame];
+    
+    img.image = [UIImage imageNamed:@"mv_main.jpg"];
+    
+    [self.view addSubview:img];
 }
 
-- (void)showLeftView
+- (void)LeftView
 {
-    [self.drawerController showLeftView];
+    [self.delegate.controller showLeftView];
 }
 
-- (void)showRightView
+- (void)RightView
 {
-    [self.drawerController showRighView];
+    [self.delegate.controller showRighView];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
